@@ -1,7 +1,7 @@
 {
     "variables":{
-        "accesskey": "AKIAZT7NNUSGDE3Q2Z7A",
-        "secretkey":"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",
+        "accesskey": "",
+        "secretkey":"",
         "region":"us-west-2",
         "sourceimage":"ami-08692d171e3cf02d6"
     },
