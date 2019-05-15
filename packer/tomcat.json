@@ -1,0 +1,34 @@
+{
+    "variables":{
+        "accesskey": "AKIAZT7NNUSGDE3Q2Z7A",
+        "secretkey":"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",
+        "region":"us-west-2",
+        "sourceimage":"ami-08692d171e3cf02d6"
+    },
+    "builders": [{
+        "type": "amazon-ebs",
+        "access_key": "{{user `accesskey`}}",
+        "secret_key": "{{user `secretkey`}}",
+        "region": "{{user `region`}}",
+        "source_ami": "{{user `sourceimage`}}",
+        "tags": {
+            "OS_Version": "Ubuntu",
+            "Release": "Latest",
+            "Find": "Packer"
+          },
+        "instance_type": "t2.micro",
+        "ssh_username": "ubuntu",
+        "ami_name": "packer-{{isotime | clean_resource_name}}"
+    }],
+
+    "provisioners":[
+        {
+        "type": "shell",
+        "script": "ansible.sh"
+        },
+        {
+        "type": "ansible-local",
+        "playbook_file": "apache.yaml"
+        }
+    ]
+}
